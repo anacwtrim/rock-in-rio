@@ -1,0 +1,5 @@
+alter table veiculos add locado boolean default false;
+
+create trigger status_veic before insert
+on os for each row
+update veiculos set locado=1 where veiculo.placa = os.placa_veiculo;
